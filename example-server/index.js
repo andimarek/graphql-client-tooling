@@ -17,6 +17,7 @@ const typeDefs = gql`
   type UpdateBookTitleResponse {
       message: String
       success: Boolean!
+      book: Book
   }
   type Mutation {
       updateBookTitle(input: UpdateBookTitleInput!): UpdateBookTitleResponse
@@ -48,7 +49,8 @@ const resolvers = {
                 bookToUpdate.title = newTitle;
                 return {
                     success: true,
-                    message: "Successfully updated book title"
+                    message: "Successfully updated book title",
+                    book: bookToUpdate
                 };
             } else {
                 return {

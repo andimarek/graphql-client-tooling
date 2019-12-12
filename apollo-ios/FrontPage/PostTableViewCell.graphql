@@ -8,5 +8,9 @@ mutation UpdateBookTitle($input: UpdateBookTitleInput!){
   updateBookTitle(input: $input) {
     success
     message
+    book {
+     id
+     title
+    }
   }
 }
