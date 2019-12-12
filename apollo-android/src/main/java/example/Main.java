@@ -5,6 +5,8 @@ import com.apollographql.apollo.ApolloClient;
 import com.apollographql.apollo.api.Response;
 import com.apollographql.apollo.exception.ApolloException;
 import com.example.MyQuery;
+import com.example.UpdateBookTitleMutation;
+import com.example.type.UpdateBookTitleInput;
 import org.jetbrains.annotations.NotNull;
 
 public class Main {
@@ -28,6 +30,20 @@ public class Main {
 
             }
 
+        });
+        UpdateBookTitleInput input = UpdateBookTitleInput.builder().id("1").title("newTitle").build();
+        UpdateBookTitleMutation mutation = UpdateBookTitleMutation.builder().input(input).build();
+
+        apolloClient.mutate(mutation).enqueue(new ApolloCall.Callback<UpdateBookTitleMutation.Data>() {
+            @Override
+            public void onResponse(@NotNull Response<UpdateBookTitleMutation.Data> response) {
+
+            }
+
+            @Override
+            public void onFailure(@NotNull ApolloException e) {
+
+            }
         });
     }
 

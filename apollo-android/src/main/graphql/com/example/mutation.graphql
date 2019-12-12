@@ -1,0 +1,6 @@
+mutation updateBookTitle($input: UpdateBookTitleInput!) {
+    updateBookTitle(input: $input) {
+        success
+        message
+    }
+}
