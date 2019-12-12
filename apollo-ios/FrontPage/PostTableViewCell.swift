@@ -5,18 +5,17 @@ class PostTableViewCell: UITableViewCell {
   var bookId: String?
   
   @IBOutlet weak var titleLabel: UILabel!
-  @IBOutlet weak var bylineLabel: UILabel!
-  @IBOutlet weak var votesLabel: UILabel!
+  @IBOutlet weak var authorLabel: UILabel!
   
   func configure(with book: BookDetails) {
     bookId = book.id
     
     titleLabel?.text = book.title
-//    bylineLabel?.text = byline(for: post)
+    authorLabel?.text = book.author
 //    votesLabel?.text = "\(post.votes ?? 0) vote\(post.votes == 1 ? "" : "s")"
   }
   
-  @IBAction func upvote() {
+  @IBAction func changeTitle() {
     
     guard let bookId = bookId else { return }
     let input = UpdateBookTitleInput(id:bookId,title: "newTitle")
