@@ -1,11 +1,12 @@
 fragment BookDetails on Book {
   author
   title
+  id
 }
 
-#mutation UpvotePost($postId: Int!) {
-#  upvotePost(postId: $postId) {
-#    id
-#    votes
-#  }
-#}
+mutation UpdateBookTitle($input: UpdateBookTitleInput!){
+  updateBookTitle(input: $input) {
+    success
+    message
+  }
+}

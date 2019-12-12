@@ -1,0 +1,1 @@
+apollo client:download-schema --endpoint=http://localhost:4000/graphql FrontPage/schema.json

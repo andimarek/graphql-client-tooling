@@ -10,6 +10,11 @@ Open the `.xcworkspace` file with xcode and press the run button.
 
 # Updating the schema.json
 Make sure the `../example-server` is running.
+
+## Use script
+execute `./udpate-schema.sh`
+
+## Manual
 Install apollo cli: `npm install -g apollo`
 Run: `apollo client:download-schema --endpoint=http://localhost:4000/graphql FrontPage/schema.json`
 

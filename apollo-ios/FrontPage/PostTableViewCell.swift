@@ -2,14 +2,14 @@ import UIKit
 import Apollo
 
 class PostTableViewCell: UITableViewCell {
-  var bookTitle: String?
+  var bookId: String?
   
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var bylineLabel: UILabel!
   @IBOutlet weak var votesLabel: UILabel!
   
   func configure(with book: BookDetails) {
-    bookTitle = book.title
+    bookId = book.id
     
     titleLabel?.text = book.title
 //    bylineLabel?.text = byline(for: post)
@@ -17,19 +17,19 @@ class PostTableViewCell: UITableViewCell {
   }
   
   @IBAction func upvote() {
-    return
-//    guard let postId = postId else { return }
     
-//    apollo.perform(mutation: UpvotePostMutation(postId: postId)) { result in
-//      switch result {
-//      case .success:
-//        break
-//      case .failure(let error):
-//        NSLog("Error while attempting to upvote post: \(error.localizedDescription)")
-//      }
-//    }
-//  }
-}
+    guard let bookId = bookId else { return }
+    let input = UpdateBookTitleInput(id:bookId,title: "newTitle")
+    apollo.perform(mutation: UpdateBookTitleMutation(input: input)) { result in
+      switch result {
+      case .success:
+        break
+      case .failure(let error):
+        NSLog("Error while attempting to upvote post: \(error.localizedDescription)")
+      }
+    }
+  }
+
 
 // We can define helper methods that take the generated data types as arguments
 
