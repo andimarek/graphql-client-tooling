@@ -13,7 +13,8 @@ export type Scalars = {
 
 export type Book = {
    __typename?: 'Book',
-  title?: Maybe<Scalars['String']>,
+  id: Scalars['ID'],
+  title: Scalars['String'],
   author?: Maybe<Scalars['String']>,
 };
 
@@ -22,8 +23,29 @@ export enum CacheControlScope {
   Private = 'PRIVATE'
 }
 
+export type Mutation = {
+   __typename?: 'Mutation',
+  updateBookTitle?: Maybe<UpdateBookTitleResponse>,
+};
+
+
+export type MutationUpdateBookTitleArgs = {
+  input: UpdateBookTitleInput
+};
+
 export type Query = {
    __typename?: 'Query',
   books?: Maybe<Array<Maybe<Book>>>,
+};
+
+export type UpdateBookTitleInput = {
+  id: Scalars['ID'],
+  title: Scalars['String'],
+};
+
+export type UpdateBookTitleResponse = {
+   __typename?: 'UpdateBookTitleResponse',
+  message?: Maybe<Scalars['String']>,
+  success: Scalars['Boolean'],
 };
 

@@ -1,2 +1,2 @@
 - Install dependencies: `yarn`
-- Run codgen: `npm run codegen`
+- Run codgen: `npm run generate`
