@@ -116,6 +116,29 @@
         "description": null,
         "fields": [
           {
+            "name": "books",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "BooksMutation",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "BooksMutation",
+        "description": null,
+        "fields": [
+          {
             "name": "updateBookTitle",
             "description": null,
             "args": [
@@ -216,6 +239,18 @@
                 "name": "Boolean",
                 "ofType": null
               }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "book",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "Book",
+              "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null

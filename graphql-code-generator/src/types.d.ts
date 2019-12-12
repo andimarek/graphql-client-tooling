@@ -18,6 +18,16 @@ export type Book = {
   author?: Maybe<Scalars['String']>,
 };
 
+export type BooksMutation = {
+   __typename?: 'BooksMutation',
+  updateBookTitle?: Maybe<UpdateBookTitleResponse>,
+};
+
+
+export type BooksMutationUpdateBookTitleArgs = {
+  input: UpdateBookTitleInput
+};
+
 export enum CacheControlScope {
   Public = 'PUBLIC',
   Private = 'PRIVATE'
@@ -25,12 +35,7 @@ export enum CacheControlScope {
 
 export type Mutation = {
    __typename?: 'Mutation',
-  updateBookTitle?: Maybe<UpdateBookTitleResponse>,
-};
-
-
-export type MutationUpdateBookTitleArgs = {
-  input: UpdateBookTitleInput
+  books?: Maybe<BooksMutation>,
 };
 
 export type Query = {
@@ -47,5 +52,6 @@ export type UpdateBookTitleResponse = {
    __typename?: 'UpdateBookTitleResponse',
   message?: Maybe<Scalars['String']>,
   success: Scalars['Boolean'],
+  book?: Maybe<Book>,
 };
 

@@ -19,8 +19,11 @@ const typeDefs = gql`
       success: Boolean!
       book: Book
   }
-  type Mutation {
+  type BooksMutation {
       updateBookTitle(input: UpdateBookTitleInput!): UpdateBookTitleResponse
+  }
+  type Mutation {
+      books: BooksMutation 
   } 
 `;
 
@@ -42,6 +45,11 @@ const resolvers = {
         books: () => books,
     },
     Mutation: {
+        books: () => {
+            return "dummy";
+        }
+    },
+    BooksMutation: {
         updateBookTitle: (parent, args, context, info) => {
             const { id, title: newTitle } = args.input;
             const bookToUpdate = books.find(book => book.id == id);

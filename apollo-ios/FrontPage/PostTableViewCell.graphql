@@ -5,6 +5,7 @@ fragment BookDetails on Book {
 }
 
 mutation UpdateBookTitle($input: UpdateBookTitleInput!){
+books{
   updateBookTitle(input: $input) {
     success
     message
@@ -12,5 +13,6 @@ mutation UpdateBookTitle($input: UpdateBookTitleInput!){
      id
      title
     }
+   }
   }
 }
