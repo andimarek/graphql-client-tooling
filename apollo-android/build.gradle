@@ -1,0 +1,38 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath("com.apollographql.apollo:apollo-gradle-plugin:1.2.2")
+    }
+}
+plugins {
+    id 'java'
+}
+apply plugin: 'com.apollographql.android'
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+sourceCompatibility = 1.8
+group 'com.example'
+version '1.0-SNAPSHOT'
+
+
+apollo {
+    generateKotlinModels = false
+}
+dependencies {
+    implementation("com.apollographql.apollo:apollo-runtime:1.2.2")
+
+    // If not already on your classpath, you might need the jetbrains annotations
+    compileOnly("org.jetbrains:annotations:13.0")
+    testCompileOnly("org.jetbrains:annotations:13.0")
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+
+

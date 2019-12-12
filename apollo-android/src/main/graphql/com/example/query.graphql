@@ -1,0 +1,6 @@
+query MyQuery {
+    books {
+        title
+        author
+    }
+}
