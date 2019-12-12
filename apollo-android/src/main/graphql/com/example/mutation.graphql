@@ -1,6 +1,8 @@
 mutation updateBookTitle($input: UpdateBookTitleInput!) {
-    updateBookTitle(input: $input) {
-        success
-        message
+    books{
+        updateBookTitle(input: $input) {
+            success
+            message
+        }
     }
 }

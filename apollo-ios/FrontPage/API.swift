@@ -135,14 +135,17 @@ public final class UpdateBookTitleMutation: GraphQLMutation {
   public let operationDefinition =
     """
     mutation UpdateBookTitle($input: UpdateBookTitleInput!) {
-      updateBookTitle(input: $input) {
+      books {
         __typename
-        success
-        message
-        book {
+        updateBookTitle(input: $input) {
           __typename
-          id
-          title
+          success
+          message
+          book {
+            __typename
+            id
+            title
+          }
         }
       }
     }
@@ -164,7 +167,7 @@ public final class UpdateBookTitleMutation: GraphQLMutation {
     public static let possibleTypes = ["Mutation"]
 
     public static let selections: [GraphQLSelection] = [
-      GraphQLField("updateBookTitle", arguments: ["input": GraphQLVariable("input")], type: .object(UpdateBookTitle.selections)),
+      GraphQLField("books", type: .object(Book.selections)),
     ]
 
     public private(set) var resultMap: ResultMap
@@ -173,27 +176,25 @@ public final class UpdateBookTitleMutation: GraphQLMutation {
       self.resultMap = unsafeResultMap
     }
 
-    public init(updateBookTitle: UpdateBookTitle? = nil) {
-      self.init(unsafeResultMap: ["__typename": "Mutation", "updateBookTitle": updateBookTitle.flatMap { (value: UpdateBookTitle) -> ResultMap in value.resultMap }])
+    public init(books: Book? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Mutation", "books": books.flatMap { (value: Book) -> ResultMap in value.resultMap }])
     }
 
-    public var updateBookTitle: UpdateBookTitle? {
+    public var books: Book? {
       get {
-        return (resultMap["updateBookTitle"] as? ResultMap).flatMap { UpdateBookTitle(unsafeResultMap: $0) }
+        return (resultMap["books"] as? ResultMap).flatMap { Book(unsafeResultMap: $0) }
       }
       set {
-        resultMap.updateValue(newValue?.resultMap, forKey: "updateBookTitle")
+        resultMap.updateValue(newValue?.resultMap, forKey: "books")
       }
     }
 
-    public struct UpdateBookTitle: GraphQLSelectionSet {
-      public static let possibleTypes = ["UpdateBookTitleResponse"]
+    public struct Book: GraphQLSelectionSet {
+      public static let possibleTypes = ["BooksMutation"]
 
       public static let selections: [GraphQLSelection] = [
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-        GraphQLField("success", type: .nonNull(.scalar(Bool.self))),
-        GraphQLField("message", type: .scalar(String.self)),
-        GraphQLField("book", type: .object(Book.selections)),
+        GraphQLField("updateBookTitle", arguments: ["input": GraphQLVariable("input")], type: .object(UpdateBookTitle.selections)),
       ]
 
       public private(set) var resultMap: ResultMap
@@ -202,8 +203,8 @@ public final class UpdateBookTitleMutation: GraphQLMutation {
         self.resultMap = unsafeResultMap
       }
 
-      public init(success: Bool, message: String? = nil, book: Book? = nil) {
-        self.init(unsafeResultMap: ["__typename": "UpdateBookTitleResponse", "success": success, "message": message, "book": book.flatMap { (value: Book) -> ResultMap in value.resultMap }])
+      public init(updateBookTitle: UpdateBookTitle? = nil) {
+        self.init(unsafeResultMap: ["__typename": "BooksMutation", "updateBookTitle": updateBookTitle.flatMap { (value: UpdateBookTitle) -> ResultMap in value.resultMap }])
       }
 
       public var __typename: String {
@@ -215,40 +216,23 @@ public final class UpdateBookTitleMutation: GraphQLMutation {
         }
       }
 
-      public var success: Bool {
+      public var updateBookTitle: UpdateBookTitle? {
         get {
-          return resultMap["success"]! as! Bool
+          return (resultMap["updateBookTitle"] as? ResultMap).flatMap { UpdateBookTitle(unsafeResultMap: $0) }
         }
         set {
-          resultMap.updateValue(newValue, forKey: "success")
+          resultMap.updateValue(newValue?.resultMap, forKey: "updateBookTitle")
         }
       }
 
-      public var message: String? {
-        get {
-          return resultMap["message"] as? String
-        }
-        set {
-          resultMap.updateValue(newValue, forKey: "message")
-        }
-      }
-
-      public var book: Book? {
-        get {
-          return (resultMap["book"] as? ResultMap).flatMap { Book(unsafeResultMap: $0) }
-        }
-        set {
-          resultMap.updateValue(newValue?.resultMap, forKey: "book")
-        }
-      }
-
-      public struct Book: GraphQLSelectionSet {
-        public static let possibleTypes = ["Book"]
+      public struct UpdateBookTitle: GraphQLSelectionSet {
+        public static let possibleTypes = ["UpdateBookTitleResponse"]
 
         public static let selections: [GraphQLSelection] = [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
-          GraphQLField("title", type: .nonNull(.scalar(String.self))),
+          GraphQLField("success", type: .nonNull(.scalar(Bool.self))),
+          GraphQLField("message", type: .scalar(String.self)),
+          GraphQLField("book", type: .object(Book.selections)),
         ]
 
         public private(set) var resultMap: ResultMap
@@ -257,8 +241,8 @@ public final class UpdateBookTitleMutation: GraphQLMutation {
           self.resultMap = unsafeResultMap
         }
 
-        public init(id: GraphQLID, title: String) {
-          self.init(unsafeResultMap: ["__typename": "Book", "id": id, "title": title])
+        public init(success: Bool, message: String? = nil, book: Book? = nil) {
+          self.init(unsafeResultMap: ["__typename": "UpdateBookTitleResponse", "success": success, "message": message, "book": book.flatMap { (value: Book) -> ResultMap in value.resultMap }])
         }
 
         public var __typename: String {
@@ -270,21 +254,77 @@ public final class UpdateBookTitleMutation: GraphQLMutation {
           }
         }
 
-        public var id: GraphQLID {
+        public var success: Bool {
           get {
-            return resultMap["id"]! as! GraphQLID
+            return resultMap["success"]! as! Bool
           }
           set {
-            resultMap.updateValue(newValue, forKey: "id")
+            resultMap.updateValue(newValue, forKey: "success")
           }
         }
 
-        public var title: String {
+        public var message: String? {
           get {
-            return resultMap["title"]! as! String
+            return resultMap["message"] as? String
           }
           set {
-            resultMap.updateValue(newValue, forKey: "title")
+            resultMap.updateValue(newValue, forKey: "message")
+          }
+        }
+
+        public var book: Book? {
+          get {
+            return (resultMap["book"] as? ResultMap).flatMap { Book(unsafeResultMap: $0) }
+          }
+          set {
+            resultMap.updateValue(newValue?.resultMap, forKey: "book")
+          }
+        }
+
+        public struct Book: GraphQLSelectionSet {
+          public static let possibleTypes = ["Book"]
+
+          public static let selections: [GraphQLSelection] = [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+            GraphQLField("title", type: .nonNull(.scalar(String.self))),
+          ]
+
+          public private(set) var resultMap: ResultMap
+
+          public init(unsafeResultMap: ResultMap) {
+            self.resultMap = unsafeResultMap
+          }
+
+          public init(id: GraphQLID, title: String) {
+            self.init(unsafeResultMap: ["__typename": "Book", "id": id, "title": title])
+          }
+
+          public var __typename: String {
+            get {
+              return resultMap["__typename"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "__typename")
+            }
+          }
+
+          public var id: GraphQLID {
+            get {
+              return resultMap["id"]! as! GraphQLID
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "id")
+            }
+          }
+
+          public var title: String {
+            get {
+              return resultMap["title"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "title")
+            }
           }
         }
       }
