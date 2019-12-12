@@ -1,0 +1,11 @@
+fragment BookDetails on Book {
+  author
+  title
+}
+
+#mutation UpvotePost($postId: Int!) {
+#  upvotePost(postId: $postId) {
+#    id
+#    votes
+#  }
+#}
