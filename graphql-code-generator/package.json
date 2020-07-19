@@ -140,7 +140,7 @@
     "listr-silent-renderer": "^1.1.1",
     "listr-update-renderer": "^0.5.0",
     "listr-verbose-renderer": "^0.5.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "log-symbols": "^3.0.0",
     "log-update": "^3.3.0",
     "lower-case": "^1.1.4",
