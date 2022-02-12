@@ -9,7 +9,7 @@
   "main": "index.js",
   "dependencies": {
     "aggregate-error": "^3.0.1",
-    "ajv": "^6.10.2",
+    "ajv": "^6.12.3",
     "ansi-escapes": "^3.2.0",
     "ansi-regex": "^2.1.1",
     "ansi-styles": "^3.2.1",
