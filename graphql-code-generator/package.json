@@ -193,7 +193,7 @@
     "safer-buffer": "^2.1.2",
     "sentence-case": "^2.1.1",
     "signal-exit": "^3.0.2",
-    "simple-git": "^1.126.0",
+    "simple-git": "^3.5.0",
     "slash": "^3.0.0",
     "slice-ansi": "^0.0.4",
     "snake-case": "^2.1.0",
