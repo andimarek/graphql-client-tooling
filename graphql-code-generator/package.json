@@ -54,7 +54,7 @@
     "constant-case": "^2.0.0",
     "core-util-is": "^1.0.2",
     "cosmiconfig": "^6.0.0",
-    "cross-fetch": "^3.0.4",
+    "cross-fetch": "^3.1.5",
     "dashdash": "^1.14.1",
     "date-fns": "^1.30.1",
     "debounce": "^1.2.0",
